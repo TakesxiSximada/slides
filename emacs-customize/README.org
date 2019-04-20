@@ -30,9 +30,12 @@ https://github.com/syl20bnr/spacemacs
 
 - spacemacsの設定のやり方を覚えない 
   (ちょっと大変)
+
 - うまくいかないときにspacemacsの問題かどうかを切り分けないといけない
   (ちょっと大変)
+
 - とはいえ便利なspacemacs
+
   - 特にいろんなレイヤーがあってとっても便利
 
 * じゃあ今はどうしているか？
