@@ -153,7 +153,7 @@ https://github.com/veshboo/emacs
 - 紹介したものは公開していないものばかりなので使えないかも
 - とはいえ同じような実装は探せばmelpaにありそう...
 
-# * みんなやろうよEmacs
+* みんなやろうよEmacs
 
   
 
