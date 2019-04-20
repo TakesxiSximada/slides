@@ -2,7 +2,9 @@
 
 * 自己紹介
 
-- [[https://twitter.com/TakesxiSximada][自己紹介]]
+- なまえ：しむどん
+  - [[https://twitter.com/TakesxiSximada][Twitter]]
+  - [[https://github.com/TakesxiSximada][Github]]
 - [[/srv/sximada/slide-ad/README.org][宣伝]]
 
 * 趣旨
