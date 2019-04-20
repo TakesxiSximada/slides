@@ -2,7 +2,7 @@
 
 * 自己紹介
 
-- [[https://twitter.com/][自己紹介]]
+- [[https://twitter.com/TakesxiSximada][自己紹介]]
 - [[/srv/sximada/slide-ad/README.org][宣伝]]
 
 * 趣旨
