@@ -1,4 +1,4 @@
-#+TITLE: ぼくが普段やっているEmacsのカスタマイズ
+#+TITLE: ふだんやっているEmacsのカスタマイズを紹介する
 
 * 自己紹介
 
@@ -84,7 +84,6 @@ Emacs引きこもり
 
 * elenv - デモ
 
-
 * our-circleci - circleci のコマンド実行
 
 - circleciコマンドを使ってlocalで実行することがある
@@ -117,7 +116,6 @@ Emacs引きこもり
 - リトライ機能とかを付ける予定 (まだやってない)
 
 * our-async-exec - デモ
-
 
 * our-cider - clojureで書いたコードをemacsから呼び出す
 
