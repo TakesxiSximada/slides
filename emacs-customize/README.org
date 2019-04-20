@@ -155,7 +155,7 @@ https://github.com/veshboo/emacs
 
 * みんなやろうよEmacs
 
-  
+[[./emacs.png]]
 
 
 
