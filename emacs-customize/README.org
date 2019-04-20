@@ -1,0 +1,155 @@
+#+TITLE: ぼくがかんがえたえたさいきょうのEmacsカスタマイズ
+
+* 自己紹介
+
+- [[https://twitter.com/][自己紹介]]
+- [[/srv/sximada/slide-ad/README.org][宣伝]]
+
+* 趣旨
+
+- のりで朝LT枠に応募してしまった
+- だが特に話すことはなかった
+- 一般参加枠は空いてたというのに...
+
+* ということで...
+
+普段から開発にEmacsを使っているが
+そこで行っているカスタマイズを紹介する
+
+* 流行っていそうなspacemacs...
+
+https://github.com/syl20bnr/spacemacs
+
+[[./spacemacs.png]]
+
+使っていません (以前は使っていました)
+
+* spacemacsを使わなくなった理由
+
+- spacemacsの設定のやり方を覚えない 
+  (ちょっと大変)
+- うまくいかないときにspacemacsの問題かどうかを切り分けないといけない
+  (ちょっと大変)
+- とはいえ便利なspacemacs
+  - 特にいろんなレイヤーがあってとっても便利
+
+* じゃあ今はどうしているか？
+
+- ~brew install emacs .....~ で入れたEmacsを使っている
+- ターミナルもEmacsを使っている
+- コマンド実行はasync-shell-commandをベースに自分でwrapした関数を使っっている
+
+Emacs引きこもり
+
+* ここからは....
+
+- ここからは実際にやっているカスタマイズを紹介
+- ほとんどmelpaに上げたりしていない
+- しかもプライベートリポジトリで管理している
+
+* elenv - 環境分離 モチベーション
+
+
+- pyvenvやnode_modulesやbundlerのようなもの
+- 複数のプロジェクトを同時にやっている
+- それぞれのプロジェクトに固有のエディタ設定がある
+- あるプロジェクトで環境に変更を加えたときに他のプロジェクトに影響させない
+
+* elenv - 環境分離 挙動
+
+- プロジェクト別の =.emacs.d= が設定できる
+- プロジェクト別の =.emacs.d/init.el= に各種設定を記述できる
+- プロジェクト別の =.emacs.d= に =elpa= ディレクトリなども作成される
+- とはいえ共通にしておきたい設定もあるのでそれは =~/.emacs.d/init.el= に記述している
+
+* elenv - 環境分離 設定とデモ
+
+- =~/.emacs.d/init.el= にこのコードを記述しておく
+
+  #+BEGIN_SRC 
+  (progn (add-to-list 'load-path "/path/to/elenv/") (require 'elenv) (elenv-activate))
+  #+END_SRC
+
+  =/path/to/elenv= は =elenv.el= があるディレクトリのPATH
+      
+- 必要に応じて =elenv-root-directory= も設定する
+
+  #+BEGIN_EXAMPLE
+  (defvar elenv-root-directory "")  
+  #+END_EXAMPLE
+
+- 最初に読み込むのは =~/.emacs.d/init.el= (これは通常のEmacsの挙動)
+- =(require 'elenv)= によりelenvがloadされる
+- プロジェクト別の =.emacs.d= があるディレクトリへのPATHを聞いてくる
+
+* elenv - デモ
+
+
+* our-circleci - circleci のコマンド実行
+
+- circleciコマンドを使ってlocalで実行することがある
+- ただコマンドは複雑
+- ~.circleci/config.yml~ を解析してjobをhelmで表示
+- 選択したjobを実行
+
+* our-circleci - デモ
+
+設定はこんな感じ
+
+[[../.circleci/config.yml]]
+
+* our-simeji - simejiの顔文字を使う
+
+- simejiの顔文字をhelmで選択できるようにした　
+- 特に特記事項は無い
+
+* our-simeji - デモ
+
+* our-async-exec - async-shell-commandのラッパー
+
+- async-shell-commandと挙動はほぼ同じ
+- emacsでshellコマンドを実行する
+- async-shell-command との違いは作成するバッファ名
+- バッファ名の命名ルール
+
+  =`コマンドライン: ワーキングディレクトリ`=
+
+- リトライ機能とかを付ける予定 (まだやってない)
+
+* our-async-exec - デモ
+
+
+* our-cider - clojureで書いたコードをemacsから呼び出す
+
+- clojureで書いたコードをemacsから呼び出す
+- cider経由 (cider-jack-inしてから使う)
+- webの自動テストをclojureで書いてて重宝している
+
+#+BEGIN_SRC clojure
+;;;###interactive
+(defn senario-all
+  []
+  (senario-user-registration)
+  (senario-entry-contract))
+#+END_SRC
+
+* veshboo emacs
+
+https://github.com/veshboo/emacs
+
+- Emacs上でcocoa版のwebkitが動きます
+- 以前はこいつをbuildして使っていた
+- mojaveにUpgradeしてから動かなくなってしまった(⊙ꇴ⊙)
+
+* おわりに
+
+- emacsで実践しているカスタマイズを紹介した
+- 紹介したものは公開していないものばかりなので使えないかも
+- とはいえ同じような実装は探せばmelpaにありそう...
+
+* みんなやろうよEmacs
+
+  
+
+
+
